@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sloweds</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Sloweds - Gerador De Contas</h2>
+        <div class="generator-form">
+            <label for="service">Escolha um serviço:</label>
+            <select id="service">
+                <option value="hbomax">HBO Max</option>
+                <option value="netflix">Netflix</option>
+                <option value="paramount">Paramount+</option>
+            </select>
+            <button id="generateButton" class="btn">Gerar</button>
+            <div id="accountInfo" class="hidden">
+                <h3>Conta Gerada</h3>
+                <p>Email: <span id="email"></span></p>
+                <p>Senha: <span id="password"></span></p>
+            </div>
+        </div>
+        <button id="logoutButton" class="btn logout">Sair</button>
+    </div>
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('generateButton').addEventListener('click', function() {
+            const service = document.getElementById('service').value;
+            const stock = JSON.parse(localStorage.getItem('stock')) || {};
+            const account = stock[service]?.shift();
+
+            if (account) {
+                document.getElementById('email').textContent = account.email;
+                document.getElementById('password').textContent = account.password;
+                document.getElementById('accountInfo').classList.remove('hidden');
+                localStorage.setItem('stock', JSON.stringify(stock));
+            } else {
+                alert('Sem estoque disponível para o serviço selecionado.');
+            }
+        });
+    </script>
+</body>
+</html>

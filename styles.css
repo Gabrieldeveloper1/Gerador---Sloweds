@@ -1,0 +1,129 @@
+/* Estilos avançados */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #121212; /* Fundo escuro */
+    color: #ffffff; /* Texto claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Impede a barra de rolagem */
+}
+
+.container {
+    background-color: #1e1e1e; /* Fundo mais claro para o container */
+    padding: 30px 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    text-align: center;
+    width: 90%;
+    max-width: 700px; /* Aumenta a largura máxima */
+    animation: fadeIn 1.5s ease-in-out;
+    position: relative; /* Adiciona posição relativa */
+    overflow: hidden; /* Impede a barra de rolagem */
+    z-index: 1; /* Coloca o conteúdo acima do fundo animado */
+}
+
+h2 {
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 25px;
+    color: #e50914; /* Vermelho */
+    text-shadow: 0 0 15px rgba(229, 9, 20, 0.3); /* Sombra suave */
+    animation: glow 2s infinite alternate;
+}
+
+label {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    display: block;
+    color: #aaaaaa; /* Cinza claro */
+    text-transform: uppercase; /* Texto em maiúsculas */
+}
+
+input, select {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    background-color: #333; /* Cinza escuro */
+    color: #ffffff; /* Texto claro */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+input:focus, select:focus {
+    background-color: #444; /* Cinza um pouco mais escuro ao focar */
+    color: #ffffff; /* Cor do texto principal ao focar */
+}
+
+button {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    background: #e50914; /* Vermelho */
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #f40612; /* Vermelho mais escuro ao passar o mouse */
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95); /* Efeito de pressionar o botão */
+}
+
+#message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #aaaaaa; /* Cinza claro */
+}
+
+.success-message {
+    color: #4caf50; /* Verde */
+}
+
+.error-message {
+    color: #f44336; /* Vermelho */
+}
+
+.form-section {
+    margin-bottom: 20px;
+    border-top: 1px solid #444; /* Linha divisória entre seções */
+    padding-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    background-color: #333; /* Cinza escuro */
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+ul li:hover {
+    background-color: #444; /* Cinza um pouco mais escuro ao passar o mouse */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
