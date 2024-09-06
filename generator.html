@@ -1,49 +1,67 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Bolados</title>
+    <title>parece que você se perdeu um pouco...</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        .imagem {
+            width: 150px; 
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.8rem;
+            color: #ff1a1a;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .aviso {
+            font-size: 1rem;
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+        .redirecionando-msg {
+            font-size: 1.1rem;
+            color: #000;
+        }
+    </style>
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://boladosgerador.netlify.app/";
+        }, 60000);
+    </script>
 </head>
 <body>
+
     <div class="container">
-        <h2>BoladosGen</h2>
-        <div class="generator-form">
-            <label for="service">Escolha um servi�o:</label>
-            <select id="service">
-                <option value="spotify">Spotify Trimensal</option>
-                <option value="nitro">Nitro mensal</option>
-                <option value="nitrotri">Nitro trimensal</option>
-            </select>
-            <button id="generateButton" class="btn">Gerar</button>
-            <div id="accountInfo" class="hidden">
-                <h3>Conta Gerada</h3>
-                <p>Email: <span id="email"></span></p>
-                <p>Senha: <span id="password"></span></p>
-            </div>
-        </div>
-        <button id="logoutButton" class="btn logout">Sair</button>
+        <img src="imgs/perdido.png" alt="" class="imagem">
+        <h1>Parece que você se perdeu um pouco...</h1>
+        <p></p>
+        <p class="redirecionando-msg">Você provavelmente entrou aqui por engano. Aguarde 1 minuto, estamos te redirecionando para a página inicial...</p>
     </div>
-    <script>
-        document.getElementById('logoutButton').addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
 
-        document.getElementById('generateButton').addEventListener('click', function() {
-            const service = document.getElementById('service').value;
-            const stock = JSON.parse(localStorage.getItem('stock')) || {};
-            const account = stock[service]?.shift();
-
-            if (account) {
-                document.getElementById('email').textContent = account.email;
-                document.getElementById('password').textContent = account.password;
-                document.getElementById('accountInfo').classList.remove('hidden');
-                localStorage.setItem('stock', JSON.stringify(stock));
-            } else {
-                alert('Sem estoque dispon�vel para o servi�o selecionado.');
-            }
-        });
-    </script>
 </body>
 </html>
