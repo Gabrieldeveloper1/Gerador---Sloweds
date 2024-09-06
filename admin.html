@@ -1,323 +1,67 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SUSE:wght@300;400;500;700&display=swap">
-    <title>Admin - Bolados</title>
+    <title>parece que você se perdeu um pouco...</title>
     <style>
         body {
-            font-family: 'SUSE', sans-serif;
-            background: #f0f2f5;
-            color: #333;
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            display: flex;
-        }
-
-        .sidebar {
-            width: 250px;
-            background: #2a2d3e;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
-            position: fixed;
-            color: #fff;
-            transition: width 0.3s;
-        }
-
-        .sidebar-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .sidebar h2 {
-            font-size: 1.5em;
-            color: #fff;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin: 20px 0;
             display: flex;
+            justify-content: center;
             align-items: center;
-            font-size: 1.2em;
-            cursor: pointer;
-            color: #c5c7cd;
-            transition: color 0.3s;
         }
-
-        .sidebar ul li i {
-            margin-right: 10px;
-        }
-
-        .sidebar ul li:hover {
-            color: #fff;
-        }
-
-        .main-content {
-            margin-left: 270px;
+        .container {
+            background-color: #ffffff;
             padding: 40px;
-            width: calc(100% - 270px);
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            transition: margin-left 0.3s, width 0.3s;
-        }
-
-        h2 {
-            font-family: 'Roboto', sans-serif;
-            margin-bottom: 25px;
-            color: #333;
-            font-size: 1.8em;
-            display: flex;
-            align-items: center;
-        }
-
-        h2 i {
-            margin-right: 10px;
-        }
-
-        h3 {
-            font-family: 'Roboto', sans-serif;
-            margin-bottom: 20px;
-            color: #555;
-            font-size: 1.4em;
-        }
-
-        label {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            display: block;
-            color: #555;
-        }
-
-        input, select {
-            width: calc(100% - 20px);
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1em;
-            background-color: #fff;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        input:focus, select:focus {
-            background-color: #f0f0f0;
-            border-color: #bbb;
-        }
-
-        button {
-            width: calc(100% - 20px);
-            padding: 12px;
-            margin: 12px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        button:hover {
-            background: #0056b3;
-            transform: scale(1.05);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        .btn-stock {
-            background: #28a745;
-        }
-
-        .btn-stock:hover {
-            background: #218838;
-        }
-
-        .btn-stock:active {
-            background: #1e7e34;
-        }
-
-        #message {
-            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
-            font-size: 1.2em;
+            max-width: 600px;
+            width: 100%;
         }
-
-        .success-message {
-            color: #28a745;
+        .imagem {
+            width: 150px; 
+            margin-bottom: 20px;
         }
-
-        .error-message {
-            color: #dc3545;
+        h1 {
+            font-size: 2.8rem;
+            color: #ff1a1a;
+            margin-bottom: 10px;
         }
-
-        .form-section {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        p {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
-
-        ul {
-            list-style-type: none;
-            padding-left: 0;
+        .aviso {
+            font-size: 1rem;
+            color: #ff4d4d;
+            font-weight: bold;
         }
-
-        ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        ul li:last-child {
-            border-bottom: none;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 200px;
-            }
-
-            .main-content {
-                margin-left: 220px;
-                width: calc(100% - 220px);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .sidebar {
-                width: 180px;
-            }
-
-            .main-content {
-                margin-left: 200px;
-                width: calc(100% - 200px);
-            }
+        .redirecionando-msg {
+            font-size: 1.1rem;
+            color: #000;
         }
     </style>
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://sloweds.netlify.app/";
+        }, 60000);
+    </script>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h2>Sloweds - Admin</h2>
-        </div>
-        <ul>
-            <li><i class="fas fa-user-cog"></i> Gerenciar Usuários</li>
-            <li><i class="fas fa-boxes"></i> Gerenciar Estoque</li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <h2><i class="fas fa-user-cog"></i> Gerenciar Usuários e Estoque</h2>
-        <div class="form-section">
-            <form id="createUserForm">
-                <h3>Criar Usuário</h3>
-                <label for="username">Nome de usuário:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit" class="btn">Criar Usuário</button>
-            </form>
-        </div>
-        <div class="form-section">
-            <h3>Lista de Usuários</h3>
-            <ul id="userList"></ul>
-        </div>
-        <div class="form-section">
-            <form id="deleteUserForm">
-                <h3>Excluir Usuário</h3>
-                <label for="deleteUsername">Nome de usuário:</label>
-                <input type="text" id="deleteUsername" name="deleteUsername" required>
-                <button type="submit" class="btn">Excluir Usuário</button>
-            </form>
-        </div>
-        <div class="form-section">
-            <form id="stockForm">
-                <h3>Gerenciar Stock de Contas</h3>
-                <label for="service">Serviço:</label>
-                <select id="service">
-                    <option value="hbomax">HBO Max</option>
-                    <option value="netflix">Netflix</option>
-                    <option value="paramount">Paramount+</option>
-                </select>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="password">Senha:</label>
-                <input type="password" id="stockPassword" name="password" required>
-                <button type="submit" class="btn btn-stock">Adicionar ao Stock</button>
-            </form>
-        </div>
-        <p id="message"></p>
+
+    <div class="container">
+        <img src="imgs/perdido.png" alt="" class="imagem">
+        <h1>Parece que você se perdeu um pouco...</h1>
+        <p></p>
+        <p class="redirecionando-msg">Você provavelmente entrou aqui por engano. Aguarde 1 minuto, estamos te redirecionando para a página inicial...</p>
     </div>
 
-<script>
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const stock = JSON.parse(localStorage.getItem('stock')) || { hbomax: [], netflix: [], paramount: [] };
-
-        function renderUsers() {
-            const userList = document.getElementById('userList');
-            userList.innerHTML = '';
-            users.forEach(user => {
-                const li = document.createElement('li');
-                li.textContent = user.username;
-                userList.appendChild(li);
-            });
-        }
-
-        document.getElementById('createUserForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            users.push({ username, password });
-            localStorage.setItem('users', JSON.stringify(users));
-
-            document.getElementById('message').textContent = 'Usuário criado com sucesso';
-            document.getElementById('message').classList.add('success-message');
-            renderUsers();
-        });
-
-        document.getElementById('deleteUserForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('deleteUsername').value;
-            const index = users.findIndex(user => user.username === username);
-
-            if (index !== -1) {
-                users.splice(index, 1);
-                localStorage.setItem('users', JSON.stringify(users));
-                document.getElementById('message').textContent = 'Usuário excluído com sucesso';
-                document.getElementById('message').classList.add('success-message');
-                renderUsers();
-            } else {
-                document.getElementById('message').textContent = 'Usuário não encontrado';
-                document.getElementById('message').classList.add('error-message');
-            }
-        });
-
-        document.getElementById('stockForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const service = document.getElementById('service').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('stockPassword').value;
-
-            stock[service].push({ email, password });
-            localStorage.setItem('stock', JSON.stringify(stock));
-
-            document.getElementById('message').textContent = 'Conta adicionada ao stock com sucesso';
-            document.getElementById('message').classList.add('success-message');
-        });
-
-        renderUsers();
-    </script>
-  </body>
+</body>
 </html>
