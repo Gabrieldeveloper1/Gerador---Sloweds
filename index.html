@@ -4,35 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Login - Bolados</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>BoladosGen - Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1c1c1c;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+        }
+
+        h2 {
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.8em;
+            border-bottom: 2px solid #5a189a;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: block;
+            color: #d1d1d1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            background-color: #333;
+            color: #fff;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border: 1px solid #5a189a; 
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            background-color: #5a189a; 
+            color: white;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #ff4f4f;
+        }
+
+        .success-message {
+            color: #4caf50;
+        }
+
+        .error-message {
+            color: #ff4f4f;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            background-color: #333;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2><i class="fas fa-sign-in-alt"></i> Entrar</h2>
-        <form id="loginForm">
-            <label for="username">Nome de usu�rio</label>
-            <input type="text" id="username" required>
-            <label for="password">Senha</label>
-            <input type="password" id="password" required>
-            <button type="submit" class="btn">Entrar</button>
-        </form>
-        <p id="message"></p>
+    <div id="loginContainer" class="container">
+        <h2>Login</h2>
+        <div class="login-form">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" placeholder="Digite o usuário">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" placeholder="Digite a senha">
+            <button id="loginButton">Entrar</button>
+            <div id="loginMessage" class="error-message hidden">Usuário ou senha incorretos!</div>
+        </div>
     </div>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(user => user.username === username && user.password === password);
 
-            if (user) {
-                window.location.href = 'generator.html';
+    <div id="generatorContainer" class="container hidden">
+        <h2>BoladosGen</h2>
+        <div class="generator-form">
+            <label for="service">Escolha um serviço:</label>
+            <select id="service">
+                <option value="spotify">Spotify Trimensal</option>
+                <option value="nitro">Nitro mensal</option>
+                <option value="nitrotri">Nitro trimensal</option>
+            </select>
+            <button id="generateButton">Gerar</button>
+            <div id="accountInfo" class="hidden">
+                <h3>Conta Gerada</h3>
+                <p>Email: <span id="email"></span></p>
+                <p>Senha: <span id="senha"></span></p>
+            </div>
+        </div>
+        <button id="logoutButton">Sair</button>
+    </div>
+
+    <script>
+        const loginData = {
+            username: 'the best',
+            password: 'is back!',
+            username: 'the best',
+            password: 'is back!',
+
+        };
+
+
+
+        const accounts = {
+            spotify: [
+                { email: "1", password: "1" },
+                { email: "1", password: "1" }
+            ],
+            nitro: [
+                { email: "1", password: "1" },
+                { email: "1", password: "1" }
+            ],
+            nitrotri: [
+                { email: "1", password: "1" },
+                { email: "1", password: "1" }
+            ]
+        };
+
+        document.getElementById("loginButton").addEventListener("click", function() {
+            const usernameInput = document.getElementById("username").value;
+            const passwordInput = document.getElementById("password").value;
+
+            if (usernameInput === loginData.username && passwordInput === loginData.password) {
+                document.getElementById("loginContainer").classList.add("hidden");
+                document.getElementById("generatorContainer").classList.remove("hidden");
             } else {
-                document.getElementById('message').textContent = 'Nome de usu�rio ou senha inv�lidos';
-                document.getElementById('message').classList.add('error-message');
+                document.getElementById("loginMessage").classList.remove("hidden");
             }
+        });
+
+        document.getElementById("generateButton").addEventListener("click", function() {
+            const service = document.getElementById("service").value;
+            const randomAccount = accounts[service][Math.floor(Math.random() * accounts[service].length)];
+            document.getElementById("email").textContent = randomAccount.email;
+            document.getElementById("password").textContent = randomAccount.password;
+            document.getElementById("accountInfo").classList.remove("hidden");
+        });
+
+        document.getElementById("logoutButton").addEventListener("click", function() {
+            document.getElementById("generatorContainer").classList.add("hidden");
+            document.getElementById("loginContainer").classList.remove("hidden");
         });
     </script>
 </body>
