@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>BoladosGen - Login</title>
     <style>
         body {
@@ -116,8 +115,8 @@
     <div id="loginContainer" class="container">
         <h2>Login</h2>
         <div class="login-form">
-            <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" placeholder="Digite o usuário">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" placeholder="Digite o usuário">
             <label for="password">Senha:</label>
             <input type="password" id="password" placeholder="Digite a senha">
             <button id="loginButton">Entrar</button>
@@ -138,7 +137,7 @@
             <div id="accountInfo" class="hidden">
                 <h3>Conta Gerada</h3>
                 <p>Email: <span id="email"></span></p>
-                <p>Senha: <span id="senha"></span></p>
+                <p>Senha: <span id="password"></span></p>
             </div>
         </div>
         <button id="logoutButton">Sair</button>
@@ -146,27 +145,22 @@
 
     <script>
         const loginData = {
-            username: 'the best',
-            password: 'is back!',
-            username: 'the best',
-            password: 'is back!',
-
+            username: 'admin',
+            password: '1234'
         };
-
-
 
         const accounts = {
             spotify: [
-                { email: "1", password: "1" },
-                { email: "1", password: "1" }
+                { email: "spotify1@fakeemail.com", password: "senhaSpotify123" },
+                { email: "spotify2@fakeemail.com", password: "senhaSpotify456" }
             ],
             nitro: [
-                { email: "1", password: "1" },
-                { email: "1", password: "1" }
+                { email: "nitro1@fakeemail.com", password: "senhaNitro123" },
+                { email: "nitro2@fakeemail.com", password: "senhaNitro456" }
             ],
             nitrotri: [
-                { email: "1", password: "1" },
-                { email: "1", password: "1" }
+                { email: "nitrotri1@fakeemail.com", password: "senhaNitroTri123" },
+                { email: "nitrotri2@fakeemail.com", password: "senhaNitroTri456" }
             ]
         };
 
